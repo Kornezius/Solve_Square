@@ -37,7 +37,7 @@ tests_error run_tests()
 {
     int run_test_check = 0;
 
-    printf("Р§РёС‚Р°С‚СЊ С‚РµСЃС‚С‹ РёР· С„Р°Р№Р»Р° РёР»Рё РёР· РїСЂРѕРіСЂР°РјРјС‹(file/program):");
+    printf("Читать тесты из файла или из программы(file/program):");
     char from_test[MAX_LEN_WORD_PROGRAM_FILE] = {};
     scanf("%8s",from_test);
 
@@ -47,7 +47,7 @@ tests_error run_tests()
         while ((ch = getchar()) != '\n');
         error_incorrect_symbol();
         txSetConsoleAttr(BLUE);
-        printf("РџРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ:");
+        printf("Повторите попытку:");
         txSetConsoleAttr(YELLOW);
         scanf("%8s", from_test);
     }
@@ -133,14 +133,14 @@ tests_error count_of_check(int run_test_check)
     if (run_test_check < COL_PROV)
     {
         txSetConsoleAttr(RED);
-        printf("Р’РµСЂРЅС‹ %d / 10 РїСЂРѕРІРµСЂРѕРє\n",run_test_check);
+        printf("Верны %d / 10 проверок\n",run_test_check);
 
         return E_TESTS_ERROR;
     }
     else
     {
         txSetConsoleAttr(GREEN);
-        printf("Р’РµСЂРЅС‹ %d / 10 РїСЂРѕРІРµСЂРѕРє\n",run_test_check);
+        printf("Верны %d / 10 проверок\n",run_test_check);
 
         return E_TESTS_OK;
     }
