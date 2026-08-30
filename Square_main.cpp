@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 #include <locale.h>
-#define NDEBUG
 #include <assert.h>
 #include <stdlib.h>
 #include <TXlib.h>
@@ -25,14 +24,8 @@ int main()
     setlocale(LC_ALL, "");
 
     int test_ok = 0;
-    bool run_test_dialog_error;
 
-    run_test_dialog_error = run_test_dialog(&test_ok);
-
-    if (run_test_dialog_error == false)
-    {
-        return 0;
-    }
+    run_test_dialog(&test_ok);
 
     if (test_ok == E_TESTS_OK)
     {
@@ -122,7 +115,7 @@ void input(double* a, double* b, double* c)
         txSetConsoleAttr(BLUE);
         printf("Повторите попытку:");
         txSetConsoleAttr(YELLOW);
-        while ((ch = getchar()) != '\n'); //todo
+        while ((ch = getchar()) != '\n');
     }
 }
 
@@ -260,7 +253,7 @@ bool if_not_same(double a, double b)
     }
 }
 
-bool run_test_dialog (int* test_ok)
+void run_test_dialog (int* test_ok)
 {
     my_assert(test_ok != NULL);
 
@@ -275,6 +268,7 @@ bool run_test_dialog (int* test_ok)
     while ((!PRINT_YES) && (!PRINT_NO))
     {
         while ((ch = getchar()) != '\n');
+        error_incorrect_symbol();
         txSetConsoleAttr(BLUE);
         printf("Повторите попытку:");
         txSetConsoleAttr(YELLOW);
@@ -284,13 +278,11 @@ bool run_test_dialog (int* test_ok)
     {
         txSetConsoleAttr(MAGENTA);
         *test_ok = run_tests();
-        return true;
     }
     else if (PRINT_NO)
     {
         txSetConsoleAttr(MAGENTA);
         *test_ok = E_TESTS_OK;
-        return true;
     }
 }
 
