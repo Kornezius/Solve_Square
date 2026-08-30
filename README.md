@@ -29,8 +29,5 @@
 6.1) При вводе "yes" все будет так же как и в пункте 3
 <img width="1081" height="599" alt="image" src="https://github.com/user-attachments/assets/07344ef0-31c0-4b8a-b65e-001e095f1539" />
 
-6.2) При вводе "no", программа заверши работу, то же самое будет происходить если вы будете вводить неправильные символы, кроме ввода коэффициентов, там программа предложит ввести их заново
+6.2) При вводе "no", программа заверши работу
 <img width="1078" height="597" alt="image" src="https://github.com/user-attachments/assets/7ce4e12b-6ff1-470d-b0ff-7d6df264d796" />
-
-<img width="1079" height="598" alt="image" src="https://github.com/user-attachments/assets/c5c5c451-9e71-41ce-99b7-d49fc9c7b39c" />
-Так делать не надо!
