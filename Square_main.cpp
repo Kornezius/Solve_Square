@@ -15,7 +15,6 @@
 //! All you need to do is enter three coefficients.
 //-------------------------------------------------------------------------
 
-// git pull test
 int main()
 {
     #if defined NDEBUG
@@ -36,7 +35,7 @@ int main()
     {
         txSetConsoleAttr(RED);
         fprintf(stderr,"Error\n"
-        "Программа не прошла проверки\n");
+        "Tests failed\n");
         error_picture();
     }
     else if (test_ok == E_SYMBOL)
@@ -107,14 +106,14 @@ void input(double* a, double* b, double* c)
     my_assert(b != c);
 
     txSetConsoleAttr(BLUE);
-    printf("Введите три коэффицента(в формате: a b c):");
+    printf("Enter coefficients(like: a b c):");
     txSetConsoleAttr(YELLOW);
 
     while ((scanf("%lg %lg %lg", a, b, c) < END_OF_SCANF) || ((ch = getchar()) != '\n'))
     {
         error_incorrect_symbol();
         txSetConsoleAttr(BLUE);
-        printf("Повторите попытку:");
+        printf("Try again (a, b, c):");
         txSetConsoleAttr(YELLOW);
         while ((ch = getchar()) != '\n');
     }
@@ -133,15 +132,15 @@ void output(int answ, double x1, double x2)
 
     switch (answ)
     {
-        case E_ZERO: printf("Ноль решений\n");
+        case E_ZERO: printf("Zero roots\n");
                 break;
-        case E_ONE:  printf("Одно решение: %lg\n", x1);
+        case E_ONE:  printf("One root: %lg\n", x1);
                 break;
-        case E_TWO:  printf("Два решения: %lg %lg\n", x1, x2);
+        case E_TWO:  printf("Two roots: %lg %lg\n", x1, x2);
                 break;
-        case E_MANY: printf("Множество решений\n");
+        case E_MANY: printf("Many roots\n");
                 break;
-        default:     fprintf(stderr,"Ошибка: невозможное число корней\n");
+        default:     fprintf(stderr,"Unknown error\n");
     }
 
     ok_picture();
@@ -262,7 +261,7 @@ void run_test_dialog (int* test_ok)
 
     hello_picture();
 
-    printf("Запустить тест программы(Yes/No):");
+    printf("Run tests: (Yes/No):");
     scanf("%3s", word);
 
     int ch = 0;
@@ -271,7 +270,7 @@ void run_test_dialog (int* test_ok)
         while ((ch = getchar()) != '\n');
         error_incorrect_symbol();
         txSetConsoleAttr(BLUE);
-        printf("Повторите попытку:");
+        printf("Error. Try again\nRun tests(Yes/No):");
         txSetConsoleAttr(YELLOW);
         scanf("%3s", word);
     }
@@ -315,9 +314,10 @@ void input_numbers_dialog()
 //--------------------------------
 void error_incorrect_symbol()
 {
+    system("cls");
     txSetConsoleAttr(RED);
     printf("Error\n"
-        "Введен некорректный симол\n");
+        "Incorrect symbol\n");
     error_picture();
 }
 
@@ -356,7 +356,7 @@ void ok_picture()
 void hello_picture()
 {
     txSetConsoleAttr(MAGENTA);
-    printf("Программа решения квадратных уравнений\n");
+    printf("Square solves\n");
     printf("               ______ \n");
     printf("              |      |\n");
     printf("              |      |\n");
@@ -371,7 +371,7 @@ void input_yes_no(char* word)
 {
     assert(word != NULL);
 
-    printf("Продолжить решать уравнения (Yes/No):");
+    printf("Repeat solving (Yes/No):");
     scanf("%3s", word);
 }
 

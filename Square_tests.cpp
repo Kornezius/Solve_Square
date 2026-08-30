@@ -37,17 +37,18 @@ tests_error run_tests()
 {
     int run_test_check = 0;
 
-    printf("Читать тесты из файла или из программы(file/program):");
+    printf("Read tests from(file/program):");
     char from_test[MAX_LEN_WORD_PROGRAM_FILE] = {};
     scanf("%8s",from_test);
 
     int ch = 0;
     while ((!(strcmp(from_test,"file") == 0)) && (!(strcmp(from_test,"program") == 0)))
     {
+        system("cls");
         while ((ch = getchar()) != '\n');
         error_incorrect_symbol();
         txSetConsoleAttr(BLUE);
-        printf("Повторите попытку:");
+        printf("Read tests from(file/program):");
         txSetConsoleAttr(YELLOW);
         scanf("%8s", from_test);
     }
@@ -99,7 +100,7 @@ void reading_from_file(int* run_test_check)
                     buffer[i] = a;
                 }
             }
-            all_tests[count_of_test] = {buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6]}; // TODO
+            all_tests[count_of_test] = {buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6]};
             run_test_one(all_tests[count_of_test], run_test_check);
             free(buffer);
         }
@@ -133,14 +134,14 @@ tests_error count_of_check(int run_test_check)
     if (run_test_check < COL_PROV)
     {
         txSetConsoleAttr(RED);
-        printf("Верны %d / 10 проверок\n",run_test_check);
+        printf("Correct %d / 10 tests\n",run_test_check);
 
         return E_TESTS_ERROR;
     }
     else
     {
         txSetConsoleAttr(GREEN);
-        printf("Верны %d / 10 проверок\n",run_test_check);
+        printf("Correct %d / 10 tests\n",run_test_check);
 
         return E_TESTS_OK;
     }
