@@ -5,8 +5,8 @@
 #define YELLOW          0xE
 #define MAGENTA         0xD
 
-#define PRINT_YES       ((strcmp(word,"Yes")  == 0) || (strcmp(word,"yes")  == 0))
-#define PRINT_NO        ((strcmp(word,"No") == 0) || (strcmp(word,"no") == 0))
+#define PRINT_YES       ((strcmp(word,"Yes")  == 0) || (strcmp(word,"yes")  == 0) || (strcmp(word,"y")  == 0) || (strcmp(word,"Y")  == 0))
+#define PRINT_NO        ((strcmp(word,"No") == 0) || (strcmp(word,"no") == 0) || (strcmp(word,"n")  == 0) || (strcmp(word,"N")  == 0))
 #define COMPARE_ANSW    (if_not_same(test.answ_ref, answ_test))
 #define COMPARE_X1      (if_not_same(x1_test, test.x1_ref))
 #define COMPARE_X2      (if_not_same(x2_test, test.x2_ref))
