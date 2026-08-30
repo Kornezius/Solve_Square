@@ -41,6 +41,17 @@ tests_error run_tests()
     char from_test[MAX_LEN_WORD_PROGRAM_FILE] = {};
     scanf("%8s",from_test);
 
+    int ch = 0;
+    while ((!(strcmp(from_test,"file") == 0)) && (!(strcmp(from_test,"program") == 0)))
+    {
+        while ((ch = getchar()) != '\n');
+        error_incorrect_symbol();
+        txSetConsoleAttr(BLUE);
+        printf("Повторите попытку:");
+        txSetConsoleAttr(YELLOW);
+        scanf("%8s", from_test);
+    }
+
     if  (strcmp(from_test,"file") == 0)
     {
         reading_from_file(&run_test_check);
@@ -49,13 +60,8 @@ tests_error run_tests()
     {
         reading_from_program(&run_test_check);
     }
-    else
-    {
-        return E_SYMBOL;
-    }
 
     count_of_check(run_test_check);
-
 }
 
 //---------------------------------------------
