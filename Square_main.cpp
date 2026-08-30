@@ -15,7 +15,7 @@
 //! All you need to do is enter three coefficients.
 //-------------------------------------------------------------------------
 
-
+// git pull test
 int main()
 {
     #if defined NDEBUG
