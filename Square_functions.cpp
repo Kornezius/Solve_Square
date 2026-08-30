@@ -45,7 +45,7 @@ const int MAX_LEN_WORD_PROGRAM_FILE = 9;
 const int MAX_TESTS                 = 10;
 const int PARAMETERS                = 7;
 
-const struct testCase all_tests_program[MAX_TESTS] =  // TODO const
+const struct testCase all_tests_program[MAX_TESTS] =
 {
     {.a = 1, .b = 2, .c = 1, .answ_ref = 1, .x1_ref = -1, .x2_ref = 0, .count_test = 1},
     {.a = 1, .b = 9, .c = 8, .answ_ref = 2, .x1_ref = -1, .x2_ref = -8, .count_test = 2},
@@ -71,7 +71,7 @@ void run_test_one           (testCase test, int* run_test_check);
 tests_error run_tests       ();
 void error_picture          ();
 void ok_picture             ();
-bool run_test_dialog        (int* test_ok);
+void run_test_dialog        (int* test_ok);
 void input_numbers_dialog   ();
 void hello_picture          ();
 void error_incorrect_symbol ();
