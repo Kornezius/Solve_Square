@@ -42,7 +42,7 @@ int main()
     {
         txSetConsoleAttr(RED);
         fprintf(stderr,"Error\n"
-        "Программа не прошла проверки\n");
+        "РџСЂРѕРіСЂР°РјРјР° РЅРµ РїСЂРѕС€Р»Р° РїСЂРѕРІРµСЂРєРё\n");
         error_picture();
     }
     else if (test_ok == E_SYMBOL)
@@ -113,14 +113,14 @@ void input(double* a, double* b, double* c)
     my_assert(b != c);
 
     txSetConsoleAttr(BLUE);
-    printf("Введите три коэффицента(в формате: a b c):");
+    printf("Р’РІРµРґРёС‚Рµ С‚СЂРё РєРѕСЌС„С„РёС†РµРЅС‚Р°(РІ С„РѕСЂРјР°С‚Рµ: a b c):");
     txSetConsoleAttr(YELLOW);
 
     while ((scanf("%lg %lg %lg", a, b, c) < END_OF_SCANF) || ((ch = getchar()) != '\n'))
     {
         error_incorrect_symbol();
         txSetConsoleAttr(BLUE);
-        printf("Повторите попытку:");
+        printf("РџРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ:");
         txSetConsoleAttr(YELLOW);
         while ((ch = getchar()) != '\n'); //todo
     }
@@ -139,15 +139,15 @@ void output(int answ, double x1, double x2)
 
     switch (answ)
     {
-        case E_ZERO: printf("Ноль решений\n");
+        case E_ZERO: printf("РќРѕР»СЊ СЂРµС€РµРЅРёР№\n");
                 break;
-        case E_ONE:  printf("Одно решение: %lg\n", x1);
+        case E_ONE:  printf("РћРґРЅРѕ СЂРµС€РµРЅРёРµ: %lg\n", x1);
                 break;
-        case E_TWO:  printf("Два решения: %lg %lg\n", x1, x2);
+        case E_TWO:  printf("Р”РІР° СЂРµС€РµРЅРёСЏ: %lg %lg\n", x1, x2);
                 break;
-        case E_MANY: printf("Множество решений\n");
+        case E_MANY: printf("РњРЅРѕР¶РµСЃС‚РІРѕ СЂРµС€РµРЅРёР№\n");
                 break;
-        default:     fprintf(stderr,"Ошибка: невозможное число корней\n");
+        default:     fprintf(stderr,"РћС€РёР±РєР°: РЅРµРІРѕР·РјРѕР¶РЅРѕРµ С‡РёСЃР»Рѕ РєРѕСЂРЅРµР№\n");
     }
 
     ok_picture();
@@ -268,25 +268,30 @@ bool run_test_dialog (int* test_ok)
 
     hello_picture();
 
-    printf("Запустить тест программы(Yes/No):");
+    printf("Р—Р°РїСѓСЃС‚РёС‚СЊ С‚РµСЃС‚ РїСЂРѕРіСЂР°РјРјС‹(Yes/No):");
     scanf("%3s", word);
 
+    int ch = 0;
+    while ((!PRINT_YES) && (!PRINT_NO))
+    {
+        while ((ch = getchar()) != '\n');
+        txSetConsoleAttr(BLUE);
+        printf("РџРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ:");
+        txSetConsoleAttr(YELLOW);
+        scanf("%3s", word);
+    }
     if (PRINT_YES)
     {
+        txSetConsoleAttr(MAGENTA);
         *test_ok = run_tests();
         return true;
     }
     else if (PRINT_NO)
     {
+        txSetConsoleAttr(MAGENTA);
         *test_ok = E_TESTS_OK;
         return true;
     }
-    else
-    {
-        error_incorrect_symbol();
-        return false;
-    }
-
 }
 
 //----------------------------------------------
@@ -319,7 +324,7 @@ void error_incorrect_symbol()
 {
     txSetConsoleAttr(RED);
     printf("Error\n"
-        "Введен некорректный симол\n");
+        "Р’РІРµРґРµРЅ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ СЃРёРјРѕР»\n");
     error_picture();
 }
 
@@ -358,7 +363,7 @@ void ok_picture()
 void hello_picture()
 {
     txSetConsoleAttr(MAGENTA);
-    printf("Программа решения квадратных уравнений\n");
+    printf("РџСЂРѕРіСЂР°РјРјР° СЂРµС€РµРЅРёСЏ РєРІР°РґСЂР°С‚РЅС‹С… СѓСЂР°РІРЅРµРЅРёР№\n");
     printf("               ______ \n");
     printf("              |      |\n");
     printf("              |      |\n");
@@ -373,7 +378,7 @@ void input_yes_no(char* word)
 {
     assert(word != NULL);
 
-    printf("Продолжить решать уравнения (Yes/No):");
+    printf("РџСЂРѕРґРѕР»Р¶РёС‚СЊ СЂРµС€Р°С‚СЊ СѓСЂР°РІРЅРµРЅРёСЏ (Yes/No):");
     scanf("%3s", word);
 }
 
